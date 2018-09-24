@@ -15,10 +15,9 @@
 
 @implementation BHAppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.rootViewController = [self wrappingRootViewController];
+  self.window.rootViewController = [BHExampleViewController create];
   [self.window makeKeyAndVisible];
 
   return YES;
@@ -36,22 +35,12 @@
   NSLog(@"applicationWillEnterForeground");
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
   NSLog(@"applicationDidBecomeActive");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
   NSLog(@"applicationWillTerminate");
-}
-
-#pragma mark - Private Methods
-
-- (UINavigationController *)wrappingRootViewController {
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[BHExampleViewController create]];
-  navigationController.navigationBarHidden = YES;
-
-  return navigationController;
 }
 
 @end
